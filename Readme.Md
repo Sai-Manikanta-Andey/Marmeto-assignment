@@ -27,7 +27,7 @@ This web application allows users to select different categories (Men, Women, Ki
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-repository.git
+   git clone https://github.com/Sai-Manikanta-Andey/Marmeto-assignment.git
 
 2.Open the index.html file in your web browser.
 

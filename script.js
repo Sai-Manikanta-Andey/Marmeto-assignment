@@ -10,14 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     tab.addEventListener("click", function () {
-      tabs.forEach((t) => t.classList.remove("active"));
+      tabs.forEach((e) => e.classList.remove("active"));
       this.classList.add("active");
     });
   });
 });
 
 function DisplayProducts(category) {
-  // Fetch data from the API based on the category
+  // Fetch data from the API
   fetch(
     "https://cdn.shopify.com/s/files/1/0564/3685/0790/files/multiProduct.json"
   ) // Replace with your actual API endpoint
@@ -29,10 +29,9 @@ function DisplayProducts(category) {
       return response.json();
     })
     .then((data) => {
-      
       const categories = data.categories || [];
       const selectedCategory = categories.find(
-        (cat) => cat.category_name === category
+        (item) => item.category_name === category
       );
 
       if (selectedCategory) {
@@ -46,7 +45,7 @@ function DisplayProducts(category) {
 }
 
 function renderProducts(products) {
-  // Clear existing products
+  // Clearing existing products
   productContainer.innerHTML = "";
 
   // Render each product
@@ -54,7 +53,7 @@ function renderProducts(products) {
     const EachProductCard = document.createElement("div");
     EachProductCard.className = "card";
 
-    // Calculate discount percentage
+    // Calculating discount percentage
     const discount = calculateDiscount(product.price, product.compare_at_price);
 
     // Rendering each product details
@@ -77,7 +76,9 @@ function renderProducts(products) {
               </div>
               <div class="product-details-bottom">
                 <h3 class="discounted-price">Rs ${product?.price}</h3>
-                <h3 class="original-price">${product?.compare_at_price+".00"}</h3>
+                <h3 class="original-price">${
+                  product?.compare_at_price + ".00"
+                }</h3>
                 <h3 class="discount">${discount}% Off</h3>
               </div>
               <button class="btn">Add to Cart</button>
@@ -88,10 +89,10 @@ function renderProducts(products) {
   });
 }
 
-function calculateDiscount(price , compare_at_price) {
+function calculateDiscount(price, compare_at_price) {
   const discount = ((compare_at_price - price) / compare_at_price) * 100;
-  return discount.toString().split(".").slice(0,1)
+  return discount.toString().split(".").slice(0, 1);
 }
 
-// Initial
+// Initial category set
 DisplayProducts("Men");

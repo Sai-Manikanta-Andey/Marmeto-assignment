@@ -8,8 +8,7 @@ A simple web application to display products based on different categories using
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Description
 
